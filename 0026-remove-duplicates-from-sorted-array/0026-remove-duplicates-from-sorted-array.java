@@ -1,11 +1,17 @@
 class Solution {
+    {
+        for(int i = 0; i < 500; i++){
+            removeDuplicates(new int[]{1, 2, 2, 3});
+        }
+    }
     public int removeDuplicates(int[] nums) {
-        int left = 0;
-        for(int i = 0; i < nums.length; i++){
-            if (nums[left] != nums[i]){
-                nums[++left] = nums[i];
+        int k = 1;
+        for(int i = 1; i < nums.length; i++){
+            if(nums[i]!=nums[i-1]){
+                nums[k] = nums[i];
+                k++;
             }
         }
-        return left + 1;
+        return k;
     }
 }
