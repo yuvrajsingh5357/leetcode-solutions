@@ -1,23 +1,19 @@
 class Solution {
-    static {
-        Solution warmup = new Solution();
-        for (int i = 0; i < 500; ++i) {
-            warmup.moveZeroes(new int[2]);
-        }
-    }
-
     public void moveZeroes(int[] nums) {
-        int n = nums.length;
-        int s = 0, f = 0;
-        while (f < n) {
-            if (nums[f] == 0) {
-                f++;
-            } else {
-                int temp = nums[s];
-                nums[s] = nums[f];
-                nums[f] = temp;
-                f++;
-                s++;
+        int j = -1;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0){
+                j = i;
+                break;
+            }
+        }
+        if(j==-1) return;
+        for(int i=j+1;i<nums.length;i++){
+            if(nums[i] != 0){
+                int temp = nums[i];
+                nums[i] = nums[j];
+                nums[j] = temp;
+                j++;
             }
         }
     }
